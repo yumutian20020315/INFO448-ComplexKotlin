@@ -1,4 +1,4 @@
-# UW Homework: Complex Kotlin
+# UW Homework: Kotlin - Advanced
 This homework is designed to force you to exercise your knowledge of the Kotlin programming language. It does not involve Android in any way yet. Like the previous assignment, it will be done entirely from the command-line using Gradle and a good text editor.
 
 ## Goal
@@ -7,19 +7,15 @@ Your task is simple: ***Make the code compile, and make all the unit tests pass.
 Again, all your work should be in the `Library.kt` file, and you may not modify the `LibraryTest.kt` file in any substantive way.
 
 ## To obtain this code...
-... clone the repository using Git:
+... you must first obtain a copy of the source. You do that by cloning this repository. Two options are available to you:
 
-    git clone https://github.com/tedneward/uw-complex-kotlin
+1. **Fork this repository.** From the GitHub repository web page, click "Fork" in the upper-right. This will create a copy of this repository in your own GitHub account. From there do a `git clone` from your own copy of the GitHub repository.
 
-Build and run the tests by using `gradlew` or `gradlew.bat`, depending on your operating system.
+2. **Clone and re-home this repository.** Open a "Command Prompt" or "Terminal" instance and use:
 
-    ./gradlew test
+        git clone https://github.com/tedneward/INFO448-KotlinAdvanced complexkotlin
 
-Make sure to create a GitHub repository for your clone, and re-home the remote origin to it:
-
-    git remote set-url origin https://github.com/[your-ID]/complexkotlin
-
-If you find it hard to remember what to do, look back at the previous assignment for details. Reach out to the TA if you are still stuck.
+    ... to do the deed. This will also create a local copy of the project on your machine in a directory called `complexkotlin`. You will also need to "re-home" your local copy so it points to your own GitHub account; you can do this by creating a repository of this same name (`INFO448-KotlinAdvanced`) in your GitHub account and then executing `git remote set-url origin https://github.com/[your-ID]/INFO448-KotlinAdvanced.git`. (Needless to say, it's a lot easier to fork the repo.)
 
 ## Now what?
 If you do not see the `Library.kt` and `LibraryTest.kt` files at first, you can find them here:
@@ -37,16 +33,22 @@ In the first section, you will be using the collection methods `map` and `fold` 
 
 FIZZBUZZ goes like this: For any sequence of numbers (such as 1 to 15), any number that is divisible by 3 returns "FIZZ", and any number divisible by 5 returns "BUZZ". Numbers which are divisible by both 3 and 5 return "FIZZBUZZ". 
 
-Use the `map` function to transform the range of numbers into an list of strings (either "FIZZ", "BUZZ" or the empty string ""), and then use `fold` to combine them all down into a single String. The end result should be "FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ". 
+Use the `map` function to transform the range of numbers into an list of strings (either "FIZZ", "BUZZ" or the empty string ""), and then use `fold` to combine them all down into a single String. The end result should be "FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ" (FIZZ (3) + BUZZ (5) + FIZZ (6) + FIZZ (9) + BUZZ (10) + FIZZ (12) + FIZZBUZZ (15)).
 
-You need to define all this in a lambda value, called `fizzbuzz`, that I can call from the tests. Be prepared to support *any* range of numbers from 0 to 15 (0 to 1, 0 to 0, 4 to 12, and so on). You need not worry about negative numbers, or numbers greater than 15 (but it shouldn't be too hard to figure out how to do FIZZBUZZ for any number).
+You need to define all this in a lambda value, called `fizzbuzz`, that I can call from the tests. Be prepared to support *any* range of numbers from 1 to 15 (1 to 2, 1 to 1, 4 to 12, and so on). You need not worry about negative numbers, or numbers greater than 15 (but it shouldn't be too hard to figure out how to do FIZZBUZZ for any number).
 
 > In addition to teaching you FizzBuzz (which really is used a lot in programmer interviews, I'm not making that up), this is an exercise in understanding how `map` and `fold` work, as they are commonly used in Kotlin code. Both come in a triad along with `filter`, and these three functions are the cornerstone library set of "functional programming". You are free to use `filter` as well, if you so choose, but you do not need to in order to pass the tests. This exercise also reinforces your comfort level with lambda and block syntax.
 
-### Use `process`
-In the second section, your job is to use the `process` function defined in the code to generate strings. The process function takes a parameter and a block of code. Your job is to write the lambdas `r1` and `r2` to call `process` such that the tests for r1 and r2 pass. 
+***Extra Credit:*** Write new tests in `src/test/kotlin/edu/uw/complexkotlin/LibraryTest.kt` to test your FizzBuzz out to 50 and 100, then make your implementation work for it. (Let the TA know when you submit the assignment that you've done this so they can look for it.)
 
-> This is an exercise in getting the "block syntax" correct, as well as more practice around lambdas. If it's not becoming clear, the use of anonymous functions, lambdas, and block syntax is really important in Kotlin and other languages, and it's incredibly useful to be able to understand and use. Lambdas open up a whole new world of capability in code design, and you need to know it.
+***Extra Credit:*** Introduce DOH! When the number is evenly divisible by 7, return DOH! Write some tests to test for this. (Again, let the TA know when you submit the assignment that you've done this.)
+
+***Extra Credit (2 pts):*** Create a function that builds a fizzbuzz function. Create a new function, `fizzbuzzgen`, that takes a map of divisors and strings to print (as in, a `mapOf(3 to "FIZZ",5 to "BUZZ")`) as a parameter, and returns a lambda function that does the fizzbuzz algorithm. Then write some tests that test your new implementation. This is worth 2 points! (Again, let the TA know when you submit the assignment that you've done this.)
+
+### Use `process`
+In the second section, your job is to use the `process` function defined in the code to generate strings. The process function takes a parameter and a block of code. Your job is to write the lambdas `r1` and `r2` to call `process` such that the tests for `r1` and `r2` pass. 
+
+> This is an exercise in getting the "block syntax" correct, as well as more practice around lambdas. If it's not becoming clear, the use of anonymous functions, lambdas, and block syntax is really important in Kotlin and other languages, and it's incredibly useful to be able to understand and use. Lambdas open up a whole new world of capability in code design. To my mind, this means you need to know it.
 
 ### Ho, Socrates!
 In the third section, you are to create an `enum` class called `Philosopher`. This is going to be a peculiar use of `enum`, however, as we are going to model a very simple state machine: that of the classic Greek philosopher. 
@@ -55,7 +57,7 @@ As everybody knows, philosophers split their time between THINKING and TALKING, 
 
 > Modeling state machines in a mobile application is a very common occurrence, so this forces you to think about how to do that using this Kotlin feature. And giving you the link to the Kotlin reference page really makes this a "gimme", honestly.
 
-> By the way, I will give a bonus extra credit point to anyone who can find out who Seneca the Younger was, which school of philosophy he is commonly associated with, and another bonus extra credit point if you can summarize that school of philosophy in a single sentence. Put your answers in comments in the code, and let the TA know so they can make sure to look for them. Direct copy-and-paste from Wikipedia does not count.
+> ***Extra Credit:*** By the way, I will give 1 extra credit point to anyone who can find out who Seneca the Younger was, and which school of philosophy he is commonly associated with. You get another 1 extra credit point if you can summarize that school of philosophy in a single sentence. Put your answers in comments in the code, and let the TA know so they can make sure to look for them. Direct copy-and-paste from Wikipedia does not count.
 
 > On another note, when you have some time to kill, play "The Wikipedia Game"--pick any random subject on Wikipedia, and click the first link on that page. On the page that comes up, click the first link on that page. Continue doing this until you have reached the Wikipedia page on Philosophy, and marvel at how everything in human existence essentially traces its roots back to philosophy and a bunch of dead Greeks in togas. STEM is not the only thing you should be learning while you are in college--it may not feel like it now, but stepping into the world of the liberal arts and philosophy in particular will make you a much better programmer--and human--down the road.
 

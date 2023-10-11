@@ -3,24 +3,30 @@
  */
 package edu.uw.complexkotlin
 
-class Library {
-    fun someLibraryMethod(): Boolean {
-        return true
-    }
-}
-
 // write a lambda using map and fold to solve "FIZZBUZZ" for the first fifteen numbers (0..15).
 // use map() to return a list with "", "FIZZ" (for 3s) or "BUZZ" (for 5s).
 // use fold() to compress the array of strings down into a single string.
 // the final string should look like FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ for 0..15.
 // store this lambda into 'fizzbuzz' so that the tests can call it
 //
-val fizzbuzz : (IntRange) -> String = { nums -> nums.map { when (it) {
-    in listOf(15) -> "FIZZBUZZ"
-    in listOf(3, 6, 9, 12, 15) -> "FIZZ"
-    in listOf(5, 10, 15) -> "BUZZ"
-    else -> ""
-}}.fold("", { acc, elem -> acc + elem } )
+val fizzbuzz : (IntRange) -> String = { 
+    nums : IntRange -> nums.map { it : Int ->
+        var result = ""
+        if (it % 3 == 0) result += "FIZZ"
+        if (it % 5 == 0) result += "BUZZ"
+        result
+    }.fold("", { acc, elem -> acc + elem } )
+}
+fun fizzbuzzgen(divisors : Map<Int, String>) : (IntRange) -> String {
+    val fizzbuzzfn : (IntRange) -> String = {
+        nums -> nums.map { it : Int ->
+            var result = ""
+            for (div in divisors.entries)
+                if ((it % div.key) == 0) result += div.value
+            result
+        }.fold("", { acc, elem -> acc + elem } )
+    }
+    return fizzbuzzfn
 }
 
 // Example usage
