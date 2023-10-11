@@ -39,10 +39,16 @@ You need to define all this in a lambda value, called `fizzbuzz`, that I can cal
 
 > In addition to teaching you FizzBuzz (which really is used a lot in programmer interviews, I'm not making that up), this is an exercise in understanding how `map` and `fold` work, as they are commonly used in Kotlin code. Both come in a triad along with `filter`, and these three functions are the cornerstone library set of "functional programming". You are free to use `filter` as well, if you so choose, but you do not need to in order to pass the tests. This exercise also reinforces your comfort level with lambda and block syntax.
 
-### Use `process`
-In the second section, your job is to use the `process` function defined in the code to generate strings. The process function takes a parameter and a block of code. Your job is to write the lambdas `r1` and `r2` to call `process` such that the tests for r1 and r2 pass. 
+***Extra Credit:*** Write new tests in `src/test/kotlin/edu/uw/complexkotlin/LibraryTest.kt` to test your FizzBuzz out to 50 and 100, then make your implementation work for it. (Let the TA know when you submit the assignment that you've done this so they can look for it.)
 
-> This is an exercise in getting the "block syntax" correct, as well as more practice around lambdas. If it's not becoming clear, the use of anonymous functions, lambdas, and block syntax is really important in Kotlin and other languages, and it's incredibly useful to be able to understand and use. Lambdas open up a whole new world of capability in code design, and you need to know it.
+***Extra Credit:*** Introduce DOH! When the number is evenly divisible by 7, return DOH! (NOTE: This is the sound that went off in my head when I realized my mistake! Doh!) Write some tests to test for this. (Again, let the TA know when you submit the assignment that you've done this.)
+
+***Extra Credit (Fall 2023 only!) (2 pts):*** My solution relied on knowing that we needed to divide by 3 and 5 ahead of time; can you write a version that takes a list of divisors (as in, a `listOf(3,5)`) as a parameter, rather than assuming 3 and 5 ahead of time? Then write some tests that test your new implementation. This is worth 2 points! (Again, let the TA know when you submit the assignment that you've done this.)
+
+### Use `process`
+In the second section, your job is to use the `process` function defined in the code to generate strings. The process function takes a parameter and a block of code. Your job is to write the lambdas `r1` and `r2` to call `process` such that the tests for `r1` and `r2` pass. 
+
+> This is an exercise in getting the "block syntax" correct, as well as more practice around lambdas. If it's not becoming clear, the use of anonymous functions, lambdas, and block syntax is really important in Kotlin and other languages, and it's incredibly useful to be able to understand and use. Lambdas open up a whole new world of capability in code design. To my mind, this means you need to know it.
 
 ### Ho, Socrates!
 In the third section, you are to create an `enum` class called `Philosopher`. This is going to be a peculiar use of `enum`, however, as we are going to model a very simple state machine: that of the classic Greek philosopher. 
@@ -51,7 +57,7 @@ As everybody knows, philosophers split their time between THINKING and TALKING, 
 
 > Modeling state machines in a mobile application is a very common occurrence, so this forces you to think about how to do that using this Kotlin feature. And giving you the link to the Kotlin reference page really makes this a "gimme", honestly.
 
-> By the way, I will give a bonus extra credit point to anyone who can find out who Seneca the Younger was, which school of philosophy he is commonly associated with, and another bonus extra credit point if you can summarize that school of philosophy in a single sentence. Put your answers in comments in the code, and let the TA know so they can make sure to look for them. Direct copy-and-paste from Wikipedia does not count.
+> ***Extra Credit:*** By the way, I will give 1 extra credit point to anyone who can find out who Seneca the Younger was, which school of philosophy he is commonly associated with. You get another 1 extra credit point if you can summarize that school of philosophy in a single sentence. Put your answers in comments in the code, and let the TA know so they can make sure to look for them. Direct copy-and-paste from Wikipedia does not count.
 
 > On another note, when you have some time to kill, play "The Wikipedia Game"--pick any random subject on Wikipedia, and click the first link on that page. On the page that comes up, click the first link on that page. Continue doing this until you have reached the Wikipedia page on Philosophy, and marvel at how everything in human existence essentially traces its roots back to philosophy and a bunch of dead Greeks in togas. STEM is not the only thing you should be learning while you are in college--it may not feel like it now, but stepping into the world of the liberal arts and philosophy in particular will make you a much better programmer--and human--down the road.
 
