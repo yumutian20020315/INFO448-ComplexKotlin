@@ -35,11 +35,11 @@ FIZZBUZZ goes like this: For any sequence of numbers (such as 1 to 15), any numb
 
 Use the `map` function to transform the range of numbers into an list of strings (either "FIZZ", "BUZZ" or the empty string ""), and then use `fold` to combine them all down into a single String. The end result should be "FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ". 
 
-You need to define all this in a lambda value, called `fizzbuzz`, that I can call from the tests. Be prepared to support *any* range of numbers from 0 to 15 (0 to 1, 0 to 0, 4 to 12, and so on). You need not worry about negative numbers, or numbers greater than 15 (but it shouldn't be too hard to figure out how to do FIZZBUZZ for any number).
+You need to define all this in a lambda value, called `fizzbuzz`, that I can call from the tests. Be prepared to support *any* range of numbers from 1 to 15 (1 to 2, 1 to 1, 4 to 12, and so on). You need not worry about negative numbers, or numbers greater than 15 (but it shouldn't be too hard to figure out how to do FIZZBUZZ for any number).
 
 > In addition to teaching you FizzBuzz (which really is used a lot in programmer interviews, I'm not making that up), this is an exercise in understanding how `map` and `fold` work, as they are commonly used in Kotlin code. Both come in a triad along with `filter`, and these three functions are the cornerstone library set of "functional programming". You are free to use `filter` as well, if you so choose, but you do not need to in order to pass the tests. This exercise also reinforces your comfort level with lambda and block syntax.
 
-***Extra Credit:*** Write new tests in `src/test/kotlin/edu/uw/complexkotlin/LibraryTest.kt` to test your FizzBuzz out to 50 and 100, then make your implementation work for it. (Let the TA know when you submit the assignment that you've done this so they can look for it.)
+***Extra Credit:*** Write new tests in `src/test/kotlin/edu/uw/complexkotlin/LibraryTest.kt` to test your FizzBuzz out to 25 and 50, then make your implementation work for it. (Let the TA know when you submit the assignment that you've done this so they can look for it.)
 
 ***Extra Credit:*** Introduce DOH! When the number is evenly divisible by 7, return DOH! (NOTE: This is the sound that went off in my head when I realized my mistake! Doh!) Write some tests to test for this. (Again, let the TA know when you submit the assignment that you've done this.)
 

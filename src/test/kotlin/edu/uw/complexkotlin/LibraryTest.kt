@@ -12,10 +12,10 @@ class LibraryTest {
     }
 
     @Test fun fizzbuzzToFifteen() {
-        assertEquals("FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ", fizzbuzz(0..15))
+        assertEquals("FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ", fizzbuzz(1..15))
     }
     @Test fun fizzbuzzToTwelve() {
-        assertEquals("FIZZBUZZFIZZFIZZBUZZFIZZ", fizzbuzz(0..12))
+        assertEquals("FIZZBUZZFIZZFIZZBUZZFIZZ", fizzbuzz(1..12))
     }
 
     @Test fun r1Test() {
