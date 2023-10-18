@@ -3,13 +3,47 @@
  */
 package edu.uw.complexkotlin
 
+import kotlin.jvm.internal.Lambda
+
 // write a lambda using map and fold to solve "FIZZBUZZ" for the first fifteen numbers (0..15).
 // use map() to return a list with "", "FIZZ" (for 3s) or "BUZZ" (for 5s).
 // use fold() to compress the array of strings down into a single string.
 // the final string should look like FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ for 0..15.
 // store this lambda into 'fizzbuzz' so that the tests can call it
 //
-val fizzbuzz : (IntRange) -> String = { _ -> "" }
+val fizzbuzz : (IntRange) -> String = { nums -> 
+    nums.map{
+    when {
+    it % 15 == 0 -> "FIZZBUZZ"
+    it % 3 == 0 -> "FIZZ"
+    it % 5 == 0 -> "BUZZ"
+    else -> ""
+}}.fold("") {acc, elem -> acc + elem}}
+
+val fizzbuzz2 : (IntRange) -> String = { nums -> 
+    nums.map{
+    when {
+    it % 105 == 0 -> "FIZZBUZZDOH!"
+    it % 35 == 0 -> "BUZZDOH!"
+    it % 21 == 0 -> "FIZZDOH!"
+    it % 15 == 0 -> "FIZZBUZZ"
+    it % 7 == 0 -> "DOH!"
+    it % 5 == 0 -> "BUZZ"
+    it % 3 == 0 -> "FIZZ"
+    else -> ""
+}}.fold("") {acc, elem -> acc + elem}}
+
+fun fizzbuzzgen(divisors: Map<Int, String>): (IntRange) -> String {
+    val sortedDivisors = divisors.keys.sortedDescending()
+
+    return { range: IntRange ->
+        range.map { num ->
+            sortedDivisors
+                .firstOrNull { divisor -> num % divisor == 0 }
+                ?.let { divisors[it] } ?: "" 
+        }.joinToString("")
+    }
+}
 
 // Example usage
 /*
@@ -35,17 +69,36 @@ fun process(message: String, block: (String) -> String): String {
 }
 // Create r1 as a lambda that calls process() with message "FOO" 
 // and a block that returns "BAR"
-val r1 = { "" }
+val r1 = { process("FOO") {"BAR"} }
 
 // Create r2 as a lambda that calls process() with message "FOO" 
 // and a block that upper-cases r2_message, and repeats it three 
 // times with no spaces: "WOOGAWOOGAWOOGA"
 val r2_message = "wooga"
-val r2 = { "" }
+val r2 = { process("FOO") {r2_message.toUpperCase().repeat(3)} }
 
 
 // write an enum-based state machine between talking and thinking
-enum class Philosopher { }
+enum class Philosopher { 
+    TALKING {
+        override fun signal() = THINKING
+        override fun toString() = "Allow me to suggest an idea..."
+    },
+    THINKING {
+        override fun signal() = TALKING
+        override fun toString() = "Deep thoughts...."
+    };
+
+    abstract fun signal(): Philosopher
+}
+
+/**
+ * Extra Credit Answers:
+ * 1. Seneca the Younger, who existed between roughly 4 BCE to 65 CE, was not only a Roman Stoic philosopher but also played pivotal roles as a statesman and playwright.
+ * 2. He is associated with the Stoic school of philosophy.
+ * 3. Stoic school of philosophy teaches the importance of understanding that true virtue stems from knowledge. Additionally, it advocates for maintaining a calm disposition towards the external world while mastering one's own reactions and actions.
+ */
+
 
 // create an class "Command" that can be used as a function 
 // (provide an "invoke()" function)
@@ -54,4 +107,8 @@ enum class Philosopher { }
 // when invoked, the Command object should return a String c
 // ontaining the prompt and then the message.
 // Example: Command(": ")("Hello!") should print ": Hello!"
-class Command(val prompt: String) { }
+class Command(val prompt: String) { 
+    operator fun invoke(message: String): String {
+        return prompt+message
+    }
+}
